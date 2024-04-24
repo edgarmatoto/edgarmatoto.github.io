@@ -1,5 +1,6 @@
 import gsap from "gsap";
 import {useGSAP} from "@gsap/react";
+import {animateRotation} from "../utils/animation.ts";
 
 const Hero = () => {
     useGSAP(() => {
@@ -10,12 +11,7 @@ const Hero = () => {
         const tl = gsap.timeline();
 
         // Animate logo
-        gsap.to("#logo", {
-            rotate: 360,
-            duration: 2,
-            repeat: -1,
-            ease: "none",
-        })
+        animateRotation("#logo");
 
         // animate job name
         tl.fromTo('.job', {

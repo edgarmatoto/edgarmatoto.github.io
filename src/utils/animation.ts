@@ -20,6 +20,18 @@ export const fadeInScroll = (element: gsap.DOMTarget, toProps?: gsap.AnimationVa
     });
 };
 
+export const fadeIn = (element: gsap.DOMTarget, toProps?: gsap.AnimationVars) => {
+    gsap.fromTo(element, {
+        y: 20,
+        opacity: 0,
+    }, {
+        y: 0,
+        opacity: 1,
+        ease: "power2.inOut",
+        ...toProps
+    });
+};
+
 export const fadeOutBackground = (imgElement: gsap.DOMTarget, firstElement: gsap.DOMTarget, lastElement: gsap.DOMTarget) => {
     gsap.to(imgElement, {
         opacity: 0,
@@ -42,5 +54,27 @@ export const fadeOutBackground = (imgElement: gsap.DOMTarget, firstElement: gsap
                 });
             },
         },
+    });
+}
+
+export const animateRotationScroll = (element: gsap.DOMTarget) => {
+    gsap.to(element, {
+        rotate: 360,
+        scrollTrigger: {
+            trigger: element,
+            toggleActions: 'start reverse resume reverse',
+            start: 'top 100%',
+            end: 'top 0%',
+            scrub: true
+        },
+    });
+}
+
+export const animateRotation = (element: gsap.DOMTarget) => {
+    gsap.to(element, {
+        rotate: 360,
+        duration: 2,
+        repeat: -1,
+        ease: "none",
     });
 }

@@ -1,21 +1,29 @@
 import {useGSAP} from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import {animateRotationScroll, fadeIn} from "../utils/animation.ts";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Works = () => {
+    const scrollTrigger = (element: gsap.DOMTarget): object => {
+        return {
+            trigger: element,
+            toggleActions: 'restart reverse restart reverse',
+            start: 'top 80%',
+        }
+    }
+
     useGSAP(() => {
-        gsap.to("#worksIcon", {
-            rotate: 360,
-            scrollTrigger: {
-                trigger: "#worksIcon",
-                toggleActions: 'start reverse resume reverse',
-                start: 'top 100%',
-                end: 'top 0%',
-                scrub: true
-            },
-        })
+        animateRotationScroll("#worksIcon");
+
+        // loop through all work
+        for (let i = 0; i < 4; i++) {
+            fadeIn(`.work-${i+1}`, {
+                scrollTrigger: scrollTrigger(`.work-${i+1}`),
+                stagger: 0.1,
+            });
+        }
     })
 
     return (
@@ -32,47 +40,47 @@ const Works = () => {
                 <div className={"flex items-center gap-4"}>
                     {/* work desc */}
                     <div className={"flex flex-col"}>
-                        <h2>Lorem Ipsum</h2>
-                        <p>Lorem ipsum dolor sit amet.</p>
+                        <h2 className={"work-1"}>Lorem Ipsum</h2>
+                        <p className={"work-1"}>Lorem ipsum dolor sit amet.</p>
                     </div>
 
                     {/*work image*/}
-                    <img className={"bg-stone-500"} width={500} height={250} src="" alt=""/>
+                    <img className={"bg-stone-500 work-1"} width={500} height={250} src="" alt=""/>
                 </div>
 
                 <div className={"flex items-center gap-4"}>
                     {/*work image*/}
-                    <img className={"bg-stone-500"} width={500} height={250} src="" alt=""/>
+                    <img className={"bg-stone-500 work-2"} width={500} height={250} src="" alt=""/>
 
                     {/* work desc */}
                     <div className={"flex flex-col"}>
-                        <h2>Lorem Ipsum</h2>
-                        <p>Lorem ipsum dolor sit amet.</p>
+                        <h2 className={"work-2"}>Lorem Ipsum</h2>
+                        <p className={"work-2"}>Lorem ipsum dolor sit amet.</p>
                     </div>
                 </div>
             </div>
 
             {/*left side works*/}
-            <div className={"flex flex-col items-end gap-20 "}>
+            <div className={"flex flex-col items-end gap-20"} >
                 <div className={"flex items-center gap-4"}>
                     {/* work desc */}
                     <div className={"flex flex-col"}>
-                        <h2>Lorem Ipsum</h2>
-                        <p>Lorem ipsum dolor sit amet.</p>
+                        <h2 className={"work-3"}>Lorem Ipsum</h2>
+                        <p className={"work-3"}>Lorem ipsum dolor sit amet.</p>
                     </div>
 
                     {/*work image*/}
-                    <img className={"bg-stone-500"} width={500} height={250} src="" alt=""/>
+                    <img className={"bg-stone-500 work-3"} width={500} height={250} src="" alt=""/>
                 </div>
 
                 <div className={"flex items-center gap-4"}>
                     {/*work image*/}
-                    <img className={"bg-stone-500"} width={500} height={250} src="" alt=""/>
+                    <img className={"bg-stone-500 work-4"} width={500} height={250} src="" alt=""/>
 
                     {/* work desc */}
                     <div className={"flex flex-col"}>
-                        <h2>Lorem Ipsum</h2>
-                        <p>Lorem ipsum dolor sit amet.</p>
+                        <h2 className={"work-4"}>Lorem Ipsum</h2>
+                        <p className={"work-4"}>Lorem ipsum dolor sit amet.</p>
                     </div>
                 </div>
             </div>

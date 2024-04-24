@@ -1,25 +1,38 @@
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import {fadeInScroll, fadeOutBackground} from "../utils/animation.ts";
+import {fadeIn, fadeOutBackground} from "../utils/animation.ts";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const About = () => {
     useGSAP(() => {
+        const scrollTrigger = (element: gsap.DOMTarget): object => {
+            return {
+                trigger: element,
+                toggleActions: 'restart reverse restart reverse',
+                start: 'top 60%',
+            }
+        }
+
         // animate background image
-        fadeOutBackground("#backgroundImage", "#about", "#contactSection")
+        fadeOutBackground("#backgroundImage", "#about", "#contactSection");
 
         // animate about title
-        fadeInScroll(".about", {
+        fadeIn(".about", {
+            scrollTrigger: scrollTrigger(".about"),
             stagger: 1,
         });
 
         // animate first-line about description
-        fadeInScroll(".about-desc-1");
+        fadeIn(".about-desc-1", {
+            scrollTrigger: scrollTrigger(".about-desc-1"),
+        });
 
         // animate about description
-        fadeInScroll(".about-desc");
+        fadeIn(".about-desc", {
+            scrollTrigger: scrollTrigger(".about-desc"),
+        });
     }, [])
 
     return (
