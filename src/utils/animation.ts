@@ -78,3 +78,63 @@ export const animateRotation = (element: gsap.DOMTarget) => {
         ease: "none",
     });
 }
+
+export const animateFooter = () => {
+    const tl = gsap.timeline({
+        scrollTrigger: {
+            trigger: '.connect',
+            toggleActions: 'restart reverse restart reverse',
+            start: 'top 85%',
+        },
+    });
+
+    tl.fromTo('.connect', {
+        x: -50,
+        opacity: 0
+    }, {
+        x: 0,
+        duration: 0.5,
+        opacity: 1,
+        delay: 0.5,
+    });
+
+    tl.fromTo(".interest", {
+        opacity: 0
+    }, {
+        ease: "power2.inOut",
+        opacity: 1
+    });
+
+    tl.fromTo(".interest-item", {
+        y: 30,
+        opacity: 0,
+    }, {
+        y: 0,
+        duration: 1,
+        opacity: 1,
+        ease: "power2.inOut",
+        stagger: 0.1
+    }, "-=0.5");
+
+    tl.fromTo(".footer-contact", {
+        y: 30,
+        opacity: 0,
+    }, {
+        y: 0,
+        duration: 1,
+        opacity: 1,
+        ease: "power2.inOut",
+        stagger: 0.5
+    }, "<0.5");
+
+    tl.fromTo(".footer-item", {
+        y: 30,
+        opacity: 0,
+    }, {
+        y: 0,
+        duration: 1,
+        opacity: 1,
+        ease: "power2.inOut",
+        stagger: 0.1
+    }, "-=80%")
+}
