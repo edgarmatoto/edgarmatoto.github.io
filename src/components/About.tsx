@@ -1,11 +1,11 @@
-import { Suspense } from "react";
-import { Canvas } from "@react-three/fiber";
+import {Suspense} from "react";
+import {Canvas} from "@react-three/fiber";
 import {Environment, OrbitControls} from "@react-three/drei";
 import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import {useGSAP} from "@gsap/react";
+import {ScrollTrigger} from "gsap/ScrollTrigger";
 
-import { fadeIn, fadeOutBackground } from "../utils/animation.ts";
+import {fadeIn, fadeOutBackground} from "../utils/animation.ts";
 // @ts-ignore
 import Car from "../../public/Car.jsx";
 
@@ -64,14 +64,14 @@ const About = () => {
                 </div>
 
                 {/*    TODO: place a 3D Object  */}
-                    <div id={"modelContainer"} className={""}>
-                    <Canvas>
-                        <ambientLight intensity={1} />
-                        <OrbitControls />
+                <div id={"modelContainer"} className={"w-1/2 h-96"}>
+                    <Canvas className={"relative left-24"}>
+                        <ambientLight intensity={1}/>
+                        <OrbitControls enableZoom={false}/>
                         <Suspense fallback={null}>
-                            <Car />
+                            <Car/>
                         </Suspense>
-                        <Environment preset={"sunset"} />
+                        <Environment preset={"forest"}/>
                     </Canvas>
                 </div>
             </div>

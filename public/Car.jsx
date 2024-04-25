@@ -14,7 +14,7 @@ export default function Model(props) {
   const { nodes, materials } = useGLTF('/car.gltf')
   return (
     <group {...props} dispose={null}>
-      <group scale={0.01}>
+      <group scale={0.013}>
         <group rotation={[-Math.PI / 2, 0, 0]} scale={100}>
           <mesh geometry={nodes.r35_turbos_r35_paint_0.geometry} material={materials.r35_paint} />
           <mesh geometry={nodes.r35_turbos_Meo_turbo_black_0.geometry} material={materials.Meo_turbo_black} />
