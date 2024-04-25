@@ -1,13 +1,13 @@
 import { Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
 import {Environment, OrbitControls} from "@react-three/drei";
-import * as THREE from 'three';
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import { fadeIn, fadeOutBackground } from "../utils/animation.ts";
-import Car from "../../public/Car.tsx";
+// @ts-ignore
+import Car from "../../public/Car.jsx";
 
 gsap.registerPlugin(ScrollTrigger);
 
