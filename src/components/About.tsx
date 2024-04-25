@@ -1,11 +1,19 @@
+import { Suspense } from "react";
+import { Canvas } from "@react-three/fiber";
+import {Environment, OrbitControls} from "@react-three/drei";
+import * as THREE from 'three';
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import {fadeIn, fadeOutBackground} from "../utils/animation.ts";
+
+import { fadeIn, fadeOutBackground } from "../utils/animation.ts";
+import Car from "../../public/Car.tsx";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const About = () => {
+
+
     useGSAP(() => {
         const scrollTrigger = (element: gsap.DOMTarget): object => {
             return {
@@ -56,7 +64,16 @@ const About = () => {
                 </div>
 
                 {/*    TODO: place a 3D Object  */}
-                <h1>3D OBJECT HERE...</h1>
+                    <div id={"modelContainer"} className={""}>
+                    <Canvas>
+                        <ambientLight intensity={1} />
+                        <OrbitControls />
+                        <Suspense fallback={null}>
+                            <Car />
+                        </Suspense>
+                        <Environment preset={"sunset"} />
+                    </Canvas>
+                </div>
             </div>
 
         </section>
