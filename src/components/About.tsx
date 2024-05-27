@@ -1,6 +1,6 @@
 import {Suspense} from "react";
 import {Canvas} from "@react-three/fiber";
-import {Environment, OrbitControls} from "@react-three/drei";
+import {Environment, OrbitControls, PerspectiveCamera} from "@react-three/drei";
 import gsap from "gsap";
 import {useGSAP} from "@gsap/react";
 import {ScrollTrigger} from "gsap/ScrollTrigger";
@@ -67,9 +67,10 @@ const About = () => {
                 <div id={"modelContainer"} className={"w-1/2 h-96"}>
                     <Canvas className={"relative left-24"}>
                         <ambientLight intensity={1}/>
-                        <OrbitControls enableZoom={false}/>
+                        <PerspectiveCamera />
+                        <OrbitControls enableZoom={false} autoRotate/>
                         <Suspense fallback={null}>
-                            <Car/>
+                            <Car position={[0, -1, 0]} />
                         </Suspense>
                         <Environment preset={"forest"}/>
                     </Canvas>
