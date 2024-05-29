@@ -1,7 +1,6 @@
 {
   "name": "portfolio-web",
   "private": true,
-  "homepage": "https://edgarmatoto.github.io/portfolio-v2",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
