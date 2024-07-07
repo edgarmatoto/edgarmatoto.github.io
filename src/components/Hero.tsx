@@ -52,7 +52,7 @@ const Hero = () => {
     return (
         <section className={"py-60 px-7 w-full"}>
             {/* TODO: Add logo */}
-            <div id={"logo"} className={"absolute right-1/2 top-1/4"}>Logo Here</div>
+            <div id={"logo"} className={"absolute right-1/2 top-1/4"}>under development</div>
 
             <div className={"flex justify-between gap-80"}>
                 <div className={"flex flex-col gap-4"}>
